@@ -1,10 +1,9 @@
-from fastapi import FastAPI
 import uvicorn
-from model import InvkineModel, Pose, Thetas
-import numpy as np
+from fastapi import FastAPI
+from models.model import InvkineModel, Pose, Thetas
 
 app = FastAPI()
-model = InvkineModel(model_path = 'model.h5')
+model = InvkineModel(model_path = 'data/model.h5')
 
 @app.on_event('startup')
 def load_model():
