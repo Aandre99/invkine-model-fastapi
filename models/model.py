@@ -14,6 +14,7 @@ class Thetas(BaseModel):
     
     theta0: float
     theta1: float
+    theta2: float
     
 class InvkineModel:
     
