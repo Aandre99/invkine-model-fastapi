@@ -15,8 +15,8 @@ def home():
 
 @app.post('/inference')
 def inference(pose: Pose)->Thetas:
-    prediction = model.predict(pose)
-    thetas = Thetas(theta0=prediction[0], theta1=prediction[1], theta2=prediction[2])
+    time, prediction = model.predict(pose)
+    thetas = Thetas(theta0=prediction[0], theta1=prediction[1], theta2=prediction[2], time=time)
     return thetas
 
 if __name__ == '__main__':

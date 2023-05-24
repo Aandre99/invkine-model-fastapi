@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from pathlib import Path
 import tensorflow as tf
 import numpy as np 
+import time
 
 class Pose(BaseModel):
     
@@ -15,6 +16,8 @@ class Thetas(BaseModel):
     theta0: float
     theta1: float
     theta2: float
+
+    time: float
     
 class InvkineModel:
     
@@ -28,6 +31,7 @@ class InvkineModel:
     def predict(self, x:Pose) -> np.ndarray:
         pose_array = np.array([[x.x, x.y, x.z]])
         print(pose_array)
+        begin_time = time.time()
         prediction = self.model.predict(pose_array)[0]
-
-        return prediction
+        end_time = time.time() - begin_time
+        return end_time, prediction
